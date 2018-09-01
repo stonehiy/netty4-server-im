@@ -6,6 +6,7 @@ CREATE TABLE `s_city` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='城市';
 
+
 CREATE TABLE `im_friend` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '主键、自增',
   `fk_firend_id` bigint(20) DEFAULT NULL COMMENT '朋友的ID    外键',

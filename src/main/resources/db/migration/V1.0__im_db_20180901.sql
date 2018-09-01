@@ -408,6 +408,7 @@ CREATE TABLE `s_user` (
   `sex` int(2) DEFAULT '0' COMMENT '性别 0：未知 1：男 2：女',
   `birthday` datetime DEFAULT NULL COMMENT '生日',
   `realname` varchar(30) DEFAULT NULL COMMENT '真实姓名',
+  `mobile` varchar(20) DEFAULT NULL COMMENT '手机号码',
   `email` varchar(50) DEFAULT NULL COMMENT '邮箱',
   `intro` varchar(150) DEFAULT NULL COMMENT '个人简介',
   `head_portrait` varchar(100) DEFAULT NULL COMMENT '头像',

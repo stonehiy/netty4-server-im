@@ -1,0 +1,67 @@
+server:
+  port: 8080
+# Spring boot application
+spring:
+  application:
+    name: ebusbar-boos
+  datasource:
+    url: jdbc:mysql://192.168.56.101:3306/im_db?autoReconnect=true&useUnicode=true&characterEncoding=utf8&useSSL=false
+    username: root
+    password: 888888
+    druid:
+      stat-view-servlet:
+        login-username: ${spring.datasource.username}
+        login-password: ${spring.datasource.password}
+      aop-patterns: com.ebusbar.boss.provider.service.*
+      web-stat-filter:
+        session-stat-enable: true
+        exclusions: "*.js,*.gif,*.jpg,*.png,*.css,*.ico,/druid/*"
+        profile-enable: true
+      filters: wall,stat
+      filter:
+        wall:
+          log-violation: true
+          throw-exception: false
+      min-idle: 1
+      initial-size: 1
+      max-active: 20
+      max-wait: 60000
+      time-between-eviction-runs-millis: 60000
+      min-evictable-idle-time-millis: 300000
+      validation-query: SELECT 'x'
+
+
+
+
+mybatis:
+  mapper-locations: classpath:mappers/*.xml
+  type-aliases-package: com.netty4.server.entity
+logging:
+  level:
+    com.ebusbar.boss.provider.mapper: debug
+
+
+#https://gitee.com/didispace/spring-boot-starter-swagger
+swagger:
+  enabled: true
+  title: spring-boot-starter-swagger
+  description: Starter for swagger 2.x
+  version: 1.4.0.RELEASE
+  license: Apache License, Version 2.0
+  licenseUrl: https://www.apache.org/licenses/LICENSE-2.0.html
+  termsOfServiceUrl: https://github.com/dyc87112/spring-boot-starter-swagger
+  contact:
+    name: didi
+    url: http://blog.didispace.com
+    email: stonehiy@gmail.com
+  base-package: com.netty4.server
+  base-path: /**
+  exclude-path: /error, /ops/**
+  authorization:
+    key-name: Authorization
+
+jwt:
+  audience: APP|H5|WEB
+  expires-second: 604800
+  issuser: ebusbar-boss
+  secret: MDk4ZjZiY2Q0NjIxZDM3M2NhZGU0ZTgzMjYyN2I0ZjY=

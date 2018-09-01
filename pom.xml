@@ -103,6 +103,16 @@
             <artifactId>joda-time</artifactId>
         </dependency>
         <!--util-->
+
+        <!--flywaydb-->
+        <dependency>
+            <groupId>org.flywaydb</groupId>
+            <artifactId>flyway-core</artifactId>
+            <version>5.1.4</version>
+        </dependency>
+        <!--flywaydb-->
+
+
         <!--test-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -117,7 +127,7 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
-
+            <!-- mybatis.generator-->
             <plugin>
                 <groupId>org.mybatis.generator</groupId>
                 <artifactId>mybatis-generator-maven-plugin</artifactId>
@@ -142,8 +152,25 @@
                         <version>1.2.3</version>
                     </dependency>
                 </dependencies>
+            </plugin>
 
+            <plugin>
+                <groupId>org.flywaydb</groupId>
+                <artifactId>flyway-maven-plugin</artifactId>
+                <version>5.1.4</version>
 
+                <configuration>
+                    <url>jdbc:mysql://192.168.56.101:3306</url>
+                    <user>root</user>
+                    <password>123456</password>
+                    <schemas>
+                        <schema>im_db</schema>
+                    </schemas>
+                    <placeholders>
+                        <keyABC>valueXYZ</keyABC>
+                        <otherplaceholder>value123</otherplaceholder>
+                    </placeholders>
+                </configuration>
             </plugin>
 
         </plugins>
