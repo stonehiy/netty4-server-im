@@ -26,7 +26,7 @@ import java.util.List;
  */
 @Configuration
 @EnableConfigurationProperties({JwtProperties.class})
-public  class CustomWebMvcConfig implements WebMvcConfigurer {
+public class CustomWebMvcConfig implements WebMvcConfigurer {
 
     @Autowired
     private JwtProperties jwtProperties;
@@ -39,7 +39,7 @@ public  class CustomWebMvcConfig implements WebMvcConfigurer {
     public void addInterceptors(InterceptorRegistry registry) {
         JwtInterceptor jwtInterceptor = new JwtInterceptor(jwtProperties, sysUserService);
         registry.addInterceptor(jwtInterceptor).addPathPatterns("/sys/**")
-                .excludePathPatterns("/sys/user/login", "/sys/user/register");
+                .excludePathPatterns("/sys/user/login" /*,"/sys/user/register"*/);
     }
 
     @Override
