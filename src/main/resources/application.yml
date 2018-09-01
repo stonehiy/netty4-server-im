@@ -39,3 +39,21 @@ mybatis:
 logging:
   level:
     com.ebusbar.boss.provider.mapper: debug
+
+
+#https://gitee.com/didispace/spring-boot-starter-swagger
+swagger:
+  enabled: true
+  title: spring-boot-starter-swagger
+  description: Starter for swagger 2.x
+  version: 1.4.0.RELEASE
+  license: Apache License, Version 2.0
+  licenseUrl: https://www.apache.org/licenses/LICENSE-2.0.html
+  termsOfServiceUrl: https://github.com/dyc87112/spring-boot-starter-swagger
+  contact:
+    name: didi
+    url: http://blog.didispace.com
+    email: stonehiy@gmail.com
+  base-package: com.netty4.server
+  base-path: /**
+  exclude-path: /error, /ops/**
