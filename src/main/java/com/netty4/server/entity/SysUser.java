@@ -1,6 +1,6 @@
 package com.netty4.server.entity;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 
 public class SysUser {
     /**
@@ -102,7 +102,7 @@ public class SysUser {
      *
      * @mbg.generated
      */
-    private Date birthday;
+    private LocalDateTime birthday;
 
     /**
      *
@@ -382,7 +382,7 @@ public class SysUser {
      *
      * @mbg.generated
      */
-    public Date getBirthday() {
+    public LocalDateTime getBirthday() {
         return birthday;
     }
 
@@ -394,7 +394,7 @@ public class SysUser {
      *
      * @mbg.generated
      */
-    public void setBirthday(Date birthday) {
+    public void setBirthday(LocalDateTime birthday) {
         this.birthday = birthday;
     }
 
@@ -871,7 +871,7 @@ public class SysUser {
         password("password", "password", "VARCHAR"),
         signaTure("signa_ture", "signaTure", "VARCHAR"),
         sex("sex", "sex", "INTEGER"),
-        birthday("birthday", "birthday", "java.time.LocalDateTime"),
+        birthday("birthday", "birthday", "TIMESTAMP"),
         realname("realname", "realname", "VARCHAR"),
         email("email", "email", "VARCHAR"),
         mobile("mobile", "mobile", "VARCHAR"),

@@ -9,7 +9,7 @@
     <id column="id" jdbcType="BIGINT" property="id" />
     <result column="fk_from_id" jdbcType="BIGINT" property="fkFromId" />
     <result column="from_name" jdbcType="VARCHAR" property="fromName" />
-    <result column="create_time" jdbcType="java.time.LocalDateTime" property="createTime" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
   </resultMap>
   <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.netty4.server.entity.GroupMsgIm">
     <!--
@@ -52,7 +52,7 @@
     -->
     select
     <choose>
-      <when test="selective != null and selective.length &gt; 0">
+      <when test="selective != null and selective.length > 0">
         <foreach collection="selective" item="column" separator=",">
           ${column.value}
         </foreach>
@@ -82,7 +82,7 @@
     </selectKey>
     insert into im_group_msg (fk_from_id, from_name, create_time, 
       content)
-    values (#{fkFromId,jdbcType=BIGINT}, #{fromName,jdbcType=VARCHAR}, #{createTime,jdbcType=java.time.LocalDateTime}, 
+    values (#{fkFromId,jdbcType=BIGINT}, #{fromName,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
       #{content,jdbcType=LONGVARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.netty4.server.entity.GroupMsgIm">
@@ -116,7 +116,7 @@
         #{fromName,jdbcType=VARCHAR},
       </if>
       <if test="createTime != null">
-        #{createTime,jdbcType=java.time.LocalDateTime},
+        #{createTime,jdbcType=TIMESTAMP},
       </if>
       <if test="content != null">
         #{content,jdbcType=LONGVARCHAR},
@@ -137,7 +137,7 @@
         from_name = #{fromName,jdbcType=VARCHAR},
       </if>
       <if test="createTime != null">
-        create_time = #{createTime,jdbcType=java.time.LocalDateTime},
+        create_time = #{createTime,jdbcType=TIMESTAMP},
       </if>
       <if test="content != null">
         content = #{content,jdbcType=LONGVARCHAR},
@@ -153,7 +153,7 @@
     update im_group_msg
     set fk_from_id = #{fkFromId,jdbcType=BIGINT},
       from_name = #{fromName,jdbcType=VARCHAR},
-      create_time = #{createTime,jdbcType=java.time.LocalDateTime},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
       content = #{content,jdbcType=LONGVARCHAR}
     where id = #{id,jdbcType=BIGINT}
   </update>
@@ -165,7 +165,7 @@
     update im_group_msg
     set fk_from_id = #{fkFromId,jdbcType=BIGINT},
       from_name = #{fromName,jdbcType=VARCHAR},
-      create_time = #{createTime,jdbcType=java.time.LocalDateTime}
+      create_time = #{createTime,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=BIGINT}
   </update>
 </mapper>

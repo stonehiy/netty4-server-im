@@ -8,7 +8,7 @@
     -->
     <id column="id" jdbcType="BIGINT" property="id" />
     <result column="name" jdbcType="VARCHAR" property="name" />
-    <result column="create_time" jdbcType="java.time.LocalDateTime" property="createTime" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
     <result column="fk_admin_id" jdbcType="BIGINT" property="fkAdminId" />
     <result column="icon" jdbcType="VARCHAR" property="icon" />
     <result column="notice" jdbcType="VARCHAR" property="notice" />
@@ -39,7 +39,7 @@
     -->
     select
     <choose>
-      <when test="selective != null and selective.length &gt; 0">
+      <when test="selective != null and selective.length > 0">
         <foreach collection="selective" item="column" separator=",">
           ${column.value}
         </foreach>
@@ -67,12 +67,12 @@
     <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
       SELECT LAST_INSERT_ID()
     </selectKey>
-    insert into im_user_group (`name`, create_time, 
-      fk_admin_id, icon, notice, 
-      intro)
-    values (#{name,jdbcType=VARCHAR}, #{createTime,jdbcType=java.time.LocalDateTime}, 
-      #{fkAdminId,jdbcType=BIGINT}, #{icon,jdbcType=VARCHAR}, #{notice,jdbcType=VARCHAR}, 
-      #{intro,jdbcType=VARCHAR})
+    insert into im_user_group (`name`, create_time, fk_admin_id, 
+      icon, notice, intro
+      )
+    values (#{name,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{fkAdminId,jdbcType=BIGINT}, 
+      #{icon,jdbcType=VARCHAR}, #{notice,jdbcType=VARCHAR}, #{intro,jdbcType=VARCHAR}
+      )
   </insert>
   <insert id="insertSelective" parameterType="com.netty4.server.entity.UserGroupIm">
     <!--
@@ -108,7 +108,7 @@
         #{name,jdbcType=VARCHAR},
       </if>
       <if test="createTime != null">
-        #{createTime,jdbcType=java.time.LocalDateTime},
+        #{createTime,jdbcType=TIMESTAMP},
       </if>
       <if test="fkAdminId != null">
         #{fkAdminId,jdbcType=BIGINT},
@@ -135,7 +135,7 @@
         `name` = #{name,jdbcType=VARCHAR},
       </if>
       <if test="createTime != null">
-        create_time = #{createTime,jdbcType=java.time.LocalDateTime},
+        create_time = #{createTime,jdbcType=TIMESTAMP},
       </if>
       <if test="fkAdminId != null">
         fk_admin_id = #{fkAdminId,jdbcType=BIGINT},
@@ -159,7 +159,7 @@
     -->
     update im_user_group
     set `name` = #{name,jdbcType=VARCHAR},
-      create_time = #{createTime,jdbcType=java.time.LocalDateTime},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
       fk_admin_id = #{fkAdminId,jdbcType=BIGINT},
       icon = #{icon,jdbcType=VARCHAR},
       notice = #{notice,jdbcType=VARCHAR},

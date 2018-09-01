@@ -12,7 +12,7 @@
     <result column="fk_to_id" jdbcType="BIGINT" property="fkToId" />
     <result column="content" jdbcType="VARCHAR" property="content" />
     <result column="state" jdbcType="INTEGER" property="state" />
-    <result column="create_time" jdbcType="java.time.LocalDateTime" property="createTime" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
     <result column="kf_group_id" jdbcType="BIGINT" property="kfGroupId" />
   </resultMap>
   <sql id="Base_Column_List">
@@ -40,7 +40,7 @@
     -->
     select
     <choose>
-      <when test="selective != null and selective.length &gt; 0">
+      <when test="selective != null and selective.length > 0">
         <foreach collection="selective" item="column" separator=",">
           ${column.value}
         </foreach>
@@ -72,7 +72,7 @@
       content, `state`, create_time, 
       kf_group_id)
     values (#{fkFromId,jdbcType=BIGINT}, #{fromNick,jdbcType=VARCHAR}, #{fkToId,jdbcType=BIGINT}, 
-      #{content,jdbcType=VARCHAR}, #{state,jdbcType=INTEGER}, #{createTime,jdbcType=java.time.LocalDateTime}, 
+      #{content,jdbcType=VARCHAR}, #{state,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, 
       #{kfGroupId,jdbcType=BIGINT})
   </insert>
   <insert id="insertSelective" parameterType="com.netty4.server.entity.groupPrivateMsgImr">
@@ -124,7 +124,7 @@
         #{state,jdbcType=INTEGER},
       </if>
       <if test="createTime != null">
-        #{createTime,jdbcType=java.time.LocalDateTime},
+        #{createTime,jdbcType=TIMESTAMP},
       </if>
       <if test="kfGroupId != null">
         #{kfGroupId,jdbcType=BIGINT},
@@ -154,7 +154,7 @@
         `state` = #{state,jdbcType=INTEGER},
       </if>
       <if test="createTime != null">
-        create_time = #{createTime,jdbcType=java.time.LocalDateTime},
+        create_time = #{createTime,jdbcType=TIMESTAMP},
       </if>
       <if test="kfGroupId != null">
         kf_group_id = #{kfGroupId,jdbcType=BIGINT},
@@ -173,7 +173,7 @@
       fk_to_id = #{fkToId,jdbcType=BIGINT},
       content = #{content,jdbcType=VARCHAR},
       `state` = #{state,jdbcType=INTEGER},
-      create_time = #{createTime,jdbcType=java.time.LocalDateTime},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
       kf_group_id = #{kfGroupId,jdbcType=BIGINT}
     where id = #{id,jdbcType=BIGINT}
   </update>

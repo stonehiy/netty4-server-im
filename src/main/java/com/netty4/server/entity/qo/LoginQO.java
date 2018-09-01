@@ -1,7 +1,16 @@
 package com.netty4.server.entity.qo;
 
+
+import org.hibernate.validator.constraints.NotEmpty;
+
+
 public class LoginQO {
+
+
+    @NotEmpty(message = "请填写用户名或手机号码")
     private String loginName;
+
+    @NotEmpty(message = "请填写登录密码")
     private String password;
 
     public String getLoginName() {

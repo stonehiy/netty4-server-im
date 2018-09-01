@@ -1,6 +1,6 @@
 package com.netty4.server.entity;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 
 public class MessageIm {
     /**
@@ -28,7 +28,7 @@ public class MessageIm {
      *
      * @mbg.generated
      */
-    private Date sendTime;
+    private LocalDateTime sendTime;
 
     /**
      *
@@ -122,7 +122,7 @@ public class MessageIm {
      *
      * @mbg.generated
      */
-    public Date getSendTime() {
+    public LocalDateTime getSendTime() {
         return sendTime;
     }
 
@@ -134,7 +134,7 @@ public class MessageIm {
      *
      * @mbg.generated
      */
-    public void setSendTime(Date sendTime) {
+    public void setSendTime(LocalDateTime sendTime) {
         this.sendTime = sendTime;
     }
 
@@ -314,7 +314,7 @@ public class MessageIm {
     public enum Column {
         id("id", "id", "BIGINT"),
         state("state", "state", "INTEGER"),
-        sendTime("send_time", "sendTime", "java.time.LocalDateTime"),
+        sendTime("send_time", "sendTime", "TIMESTAMP"),
         fkMessageTypeId("fk_message_type_id", "fkMessageTypeId", "BIGINT"),
         fkFromId("fk_from_id", "fkFromId", "BIGINT"),
         fkToId("fk_to_id", "fkToId", "BIGINT"),

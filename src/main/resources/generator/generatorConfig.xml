@@ -102,7 +102,7 @@
                enableDeleteByExample="false" enableSelectByExample="false"
                selectByExampleQueryId="false">
             <generatedKey column="id" sqlStatement="MySql" identity="true"/>
-            <columnOverride column="create_time" jdbcType="java.time.LocalDateTime"/>
+            <columnOverride column="create_time" javaType="java.time.LocalDateTime"/>
         </table>
 
         <table tableName="im_message" domainObjectName="MessageIm"
@@ -110,7 +110,7 @@
                enableDeleteByExample="false" enableSelectByExample="false"
                selectByExampleQueryId="false">
             <generatedKey column="id" sqlStatement="MySql" identity="true"/>
-            <columnOverride column="send_time" jdbcType="java.time.LocalDateTime"/>
+            <columnOverride column="send_time" javaType="java.time.LocalDateTime"/>
         </table>
 
         <table tableName="im_message_type" domainObjectName="MessageTypeIm"
@@ -125,7 +125,7 @@
                enableDeleteByExample="false" enableSelectByExample="false"
                selectByExampleQueryId="false">
             <generatedKey column="id" sqlStatement="MySql" identity="true"/>
-            <columnOverride column="create_time" jdbcType="java.time.LocalDateTime"/>
+            <columnOverride column="create_time" javaType="java.time.LocalDateTime"/>
         </table>
 
         <table tableName="im_user_state" domainObjectName="UserStateIm"
@@ -140,7 +140,7 @@
                enableDeleteByExample="false" enableSelectByExample="false"
                selectByExampleQueryId="false">
             <generatedKey column="id" sqlStatement="MySql" identity="true"/>
-            <columnOverride column="create_time" jdbcType="java.time.LocalDateTime"/>
+            <columnOverride column="create_time" javaType="java.time.LocalDateTime"/>
         </table>
 
         <table tableName="imr_group_private_msg" domainObjectName="groupPrivateMsgImr"
@@ -148,7 +148,7 @@
                enableDeleteByExample="false" enableSelectByExample="false"
                selectByExampleQueryId="false">
             <generatedKey column="id" sqlStatement="MySql" identity="true"/>
-            <columnOverride column="create_time" jdbcType="java.time.LocalDateTime"/>
+            <columnOverride column="create_time" javaType="java.time.LocalDateTime"/>
         </table>
 
         <table tableName="imr_group_user" domainObjectName="GroupUserImr"
@@ -156,7 +156,7 @@
                enableDeleteByExample="false" enableSelectByExample="false"
                selectByExampleQueryId="false">
             <generatedKey column="id" sqlStatement="MySql" identity="true"/>
-            <columnOverride column="create_time" jdbcType="java.time.LocalDateTime"/>
+            <columnOverride column="create_time" javaType="java.time.LocalDateTime"/>
         </table>
 
         <table tableName="s_city" domainObjectName="City"
@@ -185,7 +185,7 @@
                enableDeleteByExample="false" enableSelectByExample="false"
                selectByExampleQueryId="false">
             <generatedKey column="id" sqlStatement="MySql" identity="true"/>
-            <columnOverride column="birthday" jdbcType="java.time.LocalDateTime"/>
+            <columnOverride column="birthday" javaType="java.time.LocalDateTime"/>
         </table>
 
     </context>

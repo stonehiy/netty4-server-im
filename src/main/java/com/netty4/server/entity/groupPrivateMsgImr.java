@@ -1,6 +1,6 @@
 package com.netty4.server.entity;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 
 public class groupPrivateMsgImr {
     /**
@@ -64,7 +64,7 @@ public class groupPrivateMsgImr {
      *
      * @mbg.generated
      */
-    private Date createTime;
+    private LocalDateTime createTime;
 
     /**
      *
@@ -227,7 +227,7 @@ public class groupPrivateMsgImr {
      *
      * @mbg.generated
      */
-    public Date getCreateTime() {
+    public LocalDateTime getCreateTime() {
         return createTime;
     }
 
@@ -239,7 +239,7 @@ public class groupPrivateMsgImr {
      *
      * @mbg.generated
      */
-    public void setCreateTime(Date createTime) {
+    public void setCreateTime(LocalDateTime createTime) {
         this.createTime = createTime;
     }
 
@@ -354,7 +354,7 @@ public class groupPrivateMsgImr {
         fkToId("fk_to_id", "fkToId", "BIGINT"),
         content("content", "content", "VARCHAR"),
         state("state", "state", "INTEGER"),
-        createTime("create_time", "createTime", "java.time.LocalDateTime"),
+        createTime("create_time", "createTime", "TIMESTAMP"),
         kfGroupId("kf_group_id", "kfGroupId", "BIGINT");
 
         /**

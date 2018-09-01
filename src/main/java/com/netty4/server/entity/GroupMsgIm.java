@@ -1,6 +1,6 @@
 package com.netty4.server.entity;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 
 public class GroupMsgIm {
     /**
@@ -37,7 +37,7 @@ public class GroupMsgIm {
      *
      * @mbg.generated
      */
-    private Date createTime;
+    private LocalDateTime createTime;
 
     /**
      *
@@ -128,7 +128,7 @@ public class GroupMsgIm {
      *
      * @mbg.generated
      */
-    public Date getCreateTime() {
+    public LocalDateTime getCreateTime() {
         return createTime;
     }
 
@@ -140,7 +140,7 @@ public class GroupMsgIm {
      *
      * @mbg.generated
      */
-    public void setCreateTime(Date createTime) {
+    public void setCreateTime(LocalDateTime createTime) {
         this.createTime = createTime;
     }
 
@@ -243,7 +243,7 @@ public class GroupMsgIm {
         id("id", "id", "BIGINT"),
         fkFromId("fk_from_id", "fkFromId", "BIGINT"),
         fromName("from_name", "fromName", "VARCHAR"),
-        createTime("create_time", "createTime", "java.time.LocalDateTime"),
+        createTime("create_time", "createTime", "TIMESTAMP"),
         content("content", "content", "LONGVARCHAR");
 
         /**

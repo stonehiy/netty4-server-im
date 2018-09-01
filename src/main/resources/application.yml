@@ -1,5 +1,5 @@
 server:
-  port: 9090
+  port: 8080
 # Spring boot application
 spring:
   application:
@@ -57,3 +57,11 @@ swagger:
   base-package: com.netty4.server
   base-path: /**
   exclude-path: /error, /ops/**
+  authorization:
+    key-name: Authorization
+
+jwt:
+  audience: APP|H5|WEB
+  expires-second: 604800
+  issuser: ebusbar-boss
+  secret: MDk4ZjZiY2Q0NjIxZDM3M2NhZGU0ZTgzMjYyN2I0ZjY=

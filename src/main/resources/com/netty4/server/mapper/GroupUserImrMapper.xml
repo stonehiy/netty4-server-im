@@ -9,7 +9,7 @@
     <id column="id" jdbcType="BIGINT" property="id" />
     <result column="fk_user_id" jdbcType="BIGINT" property="fkUserId" />
     <result column="fk_group_id" jdbcType="BIGINT" property="fkGroupId" />
-    <result column="create_time" jdbcType="java.time.LocalDateTime" property="createTime" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
     <result column="group_nick" jdbcType="VARCHAR" property="groupNick" />
   </resultMap>
   <sql id="Base_Column_List">
@@ -37,7 +37,7 @@
     -->
     select
     <choose>
-      <when test="selective != null and selective.length &gt; 0">
+      <when test="selective != null and selective.length > 0">
         <foreach collection="selective" item="column" separator=",">
           ${column.value}
         </foreach>
@@ -67,7 +67,7 @@
     </selectKey>
     insert into imr_group_user (fk_user_id, fk_group_id, create_time, 
       group_nick)
-    values (#{fkUserId,jdbcType=BIGINT}, #{fkGroupId,jdbcType=BIGINT}, #{createTime,jdbcType=java.time.LocalDateTime}, 
+    values (#{fkUserId,jdbcType=BIGINT}, #{fkGroupId,jdbcType=BIGINT}, #{createTime,jdbcType=TIMESTAMP}, 
       #{groupNick,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.netty4.server.entity.GroupUserImr">
@@ -101,7 +101,7 @@
         #{fkGroupId,jdbcType=BIGINT},
       </if>
       <if test="createTime != null">
-        #{createTime,jdbcType=java.time.LocalDateTime},
+        #{createTime,jdbcType=TIMESTAMP},
       </if>
       <if test="groupNick != null">
         #{groupNick,jdbcType=VARCHAR},
@@ -122,7 +122,7 @@
         fk_group_id = #{fkGroupId,jdbcType=BIGINT},
       </if>
       <if test="createTime != null">
-        create_time = #{createTime,jdbcType=java.time.LocalDateTime},
+        create_time = #{createTime,jdbcType=TIMESTAMP},
       </if>
       <if test="groupNick != null">
         group_nick = #{groupNick,jdbcType=VARCHAR},
@@ -138,7 +138,7 @@
     update imr_group_user
     set fk_user_id = #{fkUserId,jdbcType=BIGINT},
       fk_group_id = #{fkGroupId,jdbcType=BIGINT},
-      create_time = #{createTime,jdbcType=java.time.LocalDateTime},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
       group_nick = #{groupNick,jdbcType=VARCHAR}
     where id = #{id,jdbcType=BIGINT}
   </update>

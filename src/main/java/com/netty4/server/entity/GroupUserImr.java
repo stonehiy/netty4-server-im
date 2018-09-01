@@ -1,6 +1,6 @@
 package com.netty4.server.entity;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 
 public class GroupUserImr {
     /**
@@ -37,7 +37,7 @@ public class GroupUserImr {
      *
      * @mbg.generated
      */
-    private Date createTime;
+    private LocalDateTime createTime;
 
     /**
      *
@@ -128,7 +128,7 @@ public class GroupUserImr {
      *
      * @mbg.generated
      */
-    public Date getCreateTime() {
+    public LocalDateTime getCreateTime() {
         return createTime;
     }
 
@@ -140,7 +140,7 @@ public class GroupUserImr {
      *
      * @mbg.generated
      */
-    public void setCreateTime(Date createTime) {
+    public void setCreateTime(LocalDateTime createTime) {
         this.createTime = createTime;
     }
 
@@ -243,7 +243,7 @@ public class GroupUserImr {
         id("id", "id", "BIGINT"),
         fkUserId("fk_user_id", "fkUserId", "BIGINT"),
         fkGroupId("fk_group_id", "fkGroupId", "BIGINT"),
-        createTime("create_time", "createTime", "java.time.LocalDateTime"),
+        createTime("create_time", "createTime", "TIMESTAMP"),
         groupNick("group_nick", "groupNick", "VARCHAR");
 
         /**

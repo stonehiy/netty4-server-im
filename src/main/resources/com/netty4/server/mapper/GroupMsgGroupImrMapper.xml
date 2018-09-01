@@ -10,7 +10,7 @@
     <result column="fk_to_id" jdbcType="BIGINT" property="fkToId" />
     <result column="fk_group_msg_id" jdbcType="BIGINT" property="fkGroupMsgId" />
     <result column="state" jdbcType="INTEGER" property="state" />
-    <result column="create_time" jdbcType="java.time.LocalDateTime" property="createTime" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
   </resultMap>
   <sql id="Base_Column_List">
     <!--
@@ -37,7 +37,7 @@
     -->
     select
     <choose>
-      <when test="selective != null and selective.length &gt; 0">
+      <when test="selective != null and selective.length > 0">
         <foreach collection="selective" item="column" separator=",">
           ${column.value}
         </foreach>
@@ -68,7 +68,7 @@
     insert into imr_group_msg_group (fk_to_id, fk_group_msg_id, `state`, 
       create_time)
     values (#{fkToId,jdbcType=BIGINT}, #{fkGroupMsgId,jdbcType=BIGINT}, #{state,jdbcType=INTEGER}, 
-      #{createTime,jdbcType=java.time.LocalDateTime})
+      #{createTime,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="com.netty4.server.entity.GroupMsgGroupImr">
     <!--
@@ -104,7 +104,7 @@
         #{state,jdbcType=INTEGER},
       </if>
       <if test="createTime != null">
-        #{createTime,jdbcType=java.time.LocalDateTime},
+        #{createTime,jdbcType=TIMESTAMP},
       </if>
     </trim>
   </insert>
@@ -125,7 +125,7 @@
         `state` = #{state,jdbcType=INTEGER},
       </if>
       <if test="createTime != null">
-        create_time = #{createTime,jdbcType=java.time.LocalDateTime},
+        create_time = #{createTime,jdbcType=TIMESTAMP},
       </if>
     </set>
     where id = #{id,jdbcType=BIGINT}
@@ -139,7 +139,7 @@
     set fk_to_id = #{fkToId,jdbcType=BIGINT},
       fk_group_msg_id = #{fkGroupMsgId,jdbcType=BIGINT},
       `state` = #{state,jdbcType=INTEGER},
-      create_time = #{createTime,jdbcType=java.time.LocalDateTime}
+      create_time = #{createTime,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=BIGINT}
   </update>
 </mapper>

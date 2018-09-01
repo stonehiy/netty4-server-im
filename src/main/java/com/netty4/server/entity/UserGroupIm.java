@@ -1,6 +1,6 @@
 package com.netty4.server.entity;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 
 public class UserGroupIm {
     /**
@@ -28,7 +28,7 @@ public class UserGroupIm {
      *
      * @mbg.generated
      */
-    private Date createTime;
+    private LocalDateTime createTime;
 
     /**
      *
@@ -122,7 +122,7 @@ public class UserGroupIm {
      *
      * @mbg.generated
      */
-    public Date getCreateTime() {
+    public LocalDateTime getCreateTime() {
         return createTime;
     }
 
@@ -134,7 +134,7 @@ public class UserGroupIm {
      *
      * @mbg.generated
      */
-    public void setCreateTime(Date createTime) {
+    public void setCreateTime(LocalDateTime createTime) {
         this.createTime = createTime;
     }
 
@@ -314,7 +314,7 @@ public class UserGroupIm {
     public enum Column {
         id("id", "id", "BIGINT"),
         name("name", "name", "VARCHAR"),
-        createTime("create_time", "createTime", "java.time.LocalDateTime"),
+        createTime("create_time", "createTime", "TIMESTAMP"),
         fkAdminId("fk_admin_id", "fkAdminId", "BIGINT"),
         icon("icon", "icon", "VARCHAR"),
         notice("notice", "notice", "VARCHAR"),

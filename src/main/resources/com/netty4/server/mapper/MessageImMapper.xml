@@ -8,7 +8,7 @@
     -->
     <id column="id" jdbcType="BIGINT" property="id" />
     <result column="state" jdbcType="INTEGER" property="state" />
-    <result column="send_time" jdbcType="java.time.LocalDateTime" property="sendTime" />
+    <result column="send_time" jdbcType="TIMESTAMP" property="sendTime" />
     <result column="fk_message_type_id" jdbcType="BIGINT" property="fkMessageTypeId" />
     <result column="fk_from_id" jdbcType="BIGINT" property="fkFromId" />
     <result column="fk_to_id" jdbcType="BIGINT" property="fkToId" />
@@ -54,7 +54,7 @@
     -->
     select
     <choose>
-      <when test="selective != null and selective.length &gt; 0">
+      <when test="selective != null and selective.length > 0">
         <foreach collection="selective" item="column" separator=",">
           ${column.value}
         </foreach>
@@ -82,12 +82,12 @@
     <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
       SELECT LAST_INSERT_ID()
     </selectKey>
-    insert into im_message (`state`, send_time, 
-      fk_message_type_id, fk_from_id, fk_to_id, 
-      content)
-    values (#{state,jdbcType=INTEGER}, #{sendTime,jdbcType=java.time.LocalDateTime}, 
-      #{fkMessageTypeId,jdbcType=BIGINT}, #{fkFromId,jdbcType=BIGINT}, #{fkToId,jdbcType=BIGINT}, 
-      #{content,jdbcType=LONGVARCHAR})
+    insert into im_message (`state`, send_time, fk_message_type_id, 
+      fk_from_id, fk_to_id, content
+      )
+    values (#{state,jdbcType=INTEGER}, #{sendTime,jdbcType=TIMESTAMP}, #{fkMessageTypeId,jdbcType=BIGINT}, 
+      #{fkFromId,jdbcType=BIGINT}, #{fkToId,jdbcType=BIGINT}, #{content,jdbcType=LONGVARCHAR}
+      )
   </insert>
   <insert id="insertSelective" parameterType="com.netty4.server.entity.MessageIm">
     <!--
@@ -123,7 +123,7 @@
         #{state,jdbcType=INTEGER},
       </if>
       <if test="sendTime != null">
-        #{sendTime,jdbcType=java.time.LocalDateTime},
+        #{sendTime,jdbcType=TIMESTAMP},
       </if>
       <if test="fkMessageTypeId != null">
         #{fkMessageTypeId,jdbcType=BIGINT},
@@ -150,7 +150,7 @@
         `state` = #{state,jdbcType=INTEGER},
       </if>
       <if test="sendTime != null">
-        send_time = #{sendTime,jdbcType=java.time.LocalDateTime},
+        send_time = #{sendTime,jdbcType=TIMESTAMP},
       </if>
       <if test="fkMessageTypeId != null">
         fk_message_type_id = #{fkMessageTypeId,jdbcType=BIGINT},
@@ -174,7 +174,7 @@
     -->
     update im_message
     set `state` = #{state,jdbcType=INTEGER},
-      send_time = #{sendTime,jdbcType=java.time.LocalDateTime},
+      send_time = #{sendTime,jdbcType=TIMESTAMP},
       fk_message_type_id = #{fkMessageTypeId,jdbcType=BIGINT},
       fk_from_id = #{fkFromId,jdbcType=BIGINT},
       fk_to_id = #{fkToId,jdbcType=BIGINT},
@@ -188,7 +188,7 @@
     -->
     update im_message
     set `state` = #{state,jdbcType=INTEGER},
-      send_time = #{sendTime,jdbcType=java.time.LocalDateTime},
+      send_time = #{sendTime,jdbcType=TIMESTAMP},
       fk_message_type_id = #{fkMessageTypeId,jdbcType=BIGINT},
       fk_from_id = #{fkFromId,jdbcType=BIGINT},
       fk_to_id = #{fkToId,jdbcType=BIGINT}
