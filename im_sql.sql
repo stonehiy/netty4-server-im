@@ -79,7 +79,7 @@ CREATE TABLE `s_user` (
   `fk_city_id` bigint(20) DEFAULT NULL COMMENT '（城市ID）    外键',
   `fk_frd_policy_id` bigint(20) DEFAULT NULL COMMENT '（好友策略ID    外键',
   `fk_user_state_id` bigint(20) DEFAULT NULL COMMENT '(用户状态ID)    外键',
-   `delete` bit DEFAULT b'0' COMMENT '是否删除',
+   `deleted` bit DEFAULT b'0' COMMENT '是否删除',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='用户表';
 
