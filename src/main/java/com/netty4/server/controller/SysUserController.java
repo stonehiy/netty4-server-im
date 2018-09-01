@@ -61,7 +61,7 @@ public class SysUserController {
     }
 
     @ApiOperation(value = "获取用户信息")
-    @GetMapping("/getUser")
+    @GetMapping("/info")
     public Object getUser(@RequestParam(value = "id") Long id) {
         SysUser user = sysUserService.getSysUserByPrimaryKey(id);
         return Result.build(Errors.SUCCESS).setData(user);
