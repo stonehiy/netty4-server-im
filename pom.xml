@@ -54,6 +54,13 @@
             <version>1.1.10</version>
         </dependency>
 
+        <!--https://blog.csdn.net/weixin_37162010/article/details/80252154-->
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-validator</artifactId>
+            <version>4.3.1.Final</version>
+        </dependency>
+
         <!--mybatis.generator-->
       <!--  <dependency>
             <groupId>org.mybatis.generator</groupId>
