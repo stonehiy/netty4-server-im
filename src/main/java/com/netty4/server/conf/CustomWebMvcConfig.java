@@ -39,7 +39,7 @@ public class CustomWebMvcConfig implements WebMvcConfigurer {
     public void addInterceptors(InterceptorRegistry registry) {
         JwtInterceptor jwtInterceptor = new JwtInterceptor(jwtProperties, sysUserService);
         registry.addInterceptor(jwtInterceptor).addPathPatterns("/sys/**")
-                .excludePathPatterns("/sys/user/login" /*,"/sys/user/register"*/);
+                .excludePathPatterns("/sys/user/login" ,"/sys/user/register");
     }
 
     @Override
