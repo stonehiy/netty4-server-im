@@ -2,7 +2,11 @@ package com.netty4.server.service;
 
 
 import com.netty4.server.entity.SysUser;
+import com.netty4.server.entity.qo.LoginQO;
 import com.netty4.server.mapper.SysUserMapper;
+import com.netty4.server.util.Errors;
+import com.netty4.server.util.Result;
+import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -27,6 +31,7 @@ public class SysUserService {
     }
 
     public SysUser getSysUserByPrimaryKey(Long pkId) {
+
         return sysUserMapper.selectByPrimaryKeyWithLogicalDelete(pkId, false);
     }
 
@@ -38,5 +43,28 @@ public class SysUserService {
         return sysUserMapper.selectByMobile(mobile);
     }
 
+
+    /**
+     * 注册用户
+     */
+    public Object register(LoginQO login){
+        SysUser sysUser = new SysUser();
+        BeanUtils.copyProperties(login, sysUser);
+        add(sysUser);
+        sysUser.setDeleted(false);
+
+        return Result.build(Errors.SUCCESS);
+    }
+
+
+    public SysUser login(LoginQO login){
+        //先匹配手机号码，在匹配用户名
+        SysUser user = getSysUserByMobile(login.getLoginName());
+        if (null == user) {
+            user = getSysUserByLoginName(login.getLoginName());
+        }
+        return user;
+
+    }
 
 }

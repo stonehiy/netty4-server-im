@@ -31,25 +31,18 @@ public class SysUserController {
     @ResponseBody
     @RequestMapping(value = "register", method = RequestMethod.POST)
     public Object register(@RequestBody @Valid LoginQO login) {
-        SysUser sysUser = new SysUser();
-        BeanUtils.copyProperties(login, sysUser);
-        sysUserService.add(sysUser);
-        return Result.build(Errors.SUCCESS);
+
+        return sysUserService.register(login);
     }
 
     @ApiOperation(value = "用户登录")
     @ResponseBody
     @RequestMapping(value = "login", method = RequestMethod.POST)
     public Object login(@RequestBody @Validated LoginQO login) {
-        //先匹配手机号码，在匹配用户名
-        SysUser user = sysUserService.getSysUserByMobile(login.getLoginName());
+        SysUser user = sysUserService.login(login);
         if (null == user) {
-            user = sysUserService.getSysUserByLoginName(login.getLoginName());
-            if (null == user) {
-                return Result.build(Errors.USER_NOT_EXIST);
-            }
+            return Result.build(Errors.USER_NOT_EXIST);
         }
-
         if (!user.getPassword().equals(login.getPassword())) {
             Result.build(Errors.PASSWORD_ERROR);
         }
@@ -59,14 +52,14 @@ public class SysUserController {
 
     @ApiOperation(value = "用户登出")
     @ResponseBody
-    @RequestMapping(value = "logout",method = RequestMethod.POST)
+    @RequestMapping(value = "logout", method = RequestMethod.POST)
     public Object logout(Long id) {
         return Result.build(Errors.SUCCESS).setData("登出成功");
     }
 
     @ApiOperation(value = "获取用户信息")
     @ResponseBody
-    @RequestMapping(value = "info",method=RequestMethod.GET)
+    @RequestMapping(value = "info", method = RequestMethod.GET)
     public Object getUser(@RequestParam(value = "id") Long id) {
         SysUser user = sysUserService.getSysUserByPrimaryKey(id);
         return Result.build(Errors.SUCCESS).setData(user);
