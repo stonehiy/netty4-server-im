@@ -35,7 +35,8 @@ public class JwtInterceptor implements HandlerInterceptor {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         try {
-            //LOGGER.info("current url -> {}",request.getRequestURI());
+            LOGGER.info("current url -> {}",request.getRequestURI());
+
             final String token = request.getHeader(HttpHeaders.AUTHORIZATION);
             if ("OPTIONS".equals(request.getMethod())) {
                 response.setStatus(HttpServletResponse.SC_OK);

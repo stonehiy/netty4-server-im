@@ -38,8 +38,8 @@ public class CustomWebMvcConfig implements WebMvcConfigurer {
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         JwtInterceptor jwtInterceptor = new JwtInterceptor(jwtProperties, sysUserService);
-        registry.addInterceptor(jwtInterceptor).addPathPatterns("/sys/**")
-                .excludePathPatterns("/sys/user/login" ,"/sys/user/register");
+        registry.addInterceptor(jwtInterceptor).addPathPatterns("/api/**")
+                .excludePathPatterns("/api/sysUser/login" ,"/api/sysUser/register");
     }
 
     @Override
@@ -54,11 +54,20 @@ public class CustomWebMvcConfig implements WebMvcConfigurer {
     public void addArgumentResolvers(List<HandlerMethodArgumentResolver> argumentResolvers) {
         argumentResolvers.add(new HandlerMethodArgumentResolver() {
 
+
+            /**
+             * 判断方法参数是否包含指定的参数注解
+             * 含有返回true，不含有返回false
+             */
             @Override
             public boolean supportsParameter(MethodParameter parameter) {
                 return parameter.hasParameterAnnotation(UserParam.class);
             }
 
+            /**
+             * 在给定的具体的请求中，把方法的参数解析到参数值里面，返回解析到的参数值，没有返回null
+             * 只有在supportsParameter返回true的时候，resolveArgument方法才会执行
+             */
             @Override
             public Object resolveArgument(MethodParameter parameter, ModelAndViewContainer mavContainer, NativeWebRequest webRequest, WebDataBinderFactory binderFactory) throws Exception {
                 SysUser user = (SysUser) webRequest.getAttribute(JwtHelper.CLAIM_USER, NativeWebRequest.SCOPE_REQUEST);

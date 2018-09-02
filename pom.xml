@@ -26,7 +26,7 @@
 
     <dependencies>
         <!--package-->
-        <dependency>
+       <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
@@ -54,17 +54,11 @@
             <version>1.1.10</version>
         </dependency>
 
-        <!--https://blog.csdn.net/weixin_37162010/article/details/80252154-->
+        <!--https://www.cnblogs.com/juncaoit/p/7872959.html-->
         <dependency>
             <groupId>org.hibernate.validator</groupId>
             <artifactId>hibernate-validator</artifactId>
             <version>6.0.10.Final</version>
-        </dependency>
-        <dependency>
-            <groupId>javax.servlet</groupId>
-            <artifactId>javax.servlet-api</artifactId>
-            <version>3.1.0</version>
-            <scope>provided</scope>
         </dependency>
 
         <!--https://gitee.com/didispace/spring-boot-starter-swagger-->

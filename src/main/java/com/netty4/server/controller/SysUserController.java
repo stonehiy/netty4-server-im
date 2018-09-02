@@ -11,13 +11,14 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 
-@Api(value = "用户模块", basePath = "/sys/user", description = "用户模块相关接口")
+@Api(value = "用户模块", basePath = "api/sysUser", description = "用户模块相关接口")
 @RestController
-@RequestMapping("/sys/user")
+@RequestMapping("api/sysUser")
 public class SysUserController {
 
     @Autowired
@@ -27,7 +28,8 @@ public class SysUserController {
     private JwtProperties jwtProperties;
 
     @ApiOperation(value = "用户注册")
-    @PostMapping("/register")
+    @ResponseBody
+    @RequestMapping(value = "register", method = RequestMethod.POST)
     public Object register(@RequestBody @Valid LoginQO login) {
         SysUser sysUser = new SysUser();
         BeanUtils.copyProperties(login, sysUser);
@@ -36,8 +38,9 @@ public class SysUserController {
     }
 
     @ApiOperation(value = "用户登录")
-    @PostMapping("/login")
-    public Object login(@RequestBody @Valid LoginQO login) {
+    @ResponseBody
+    @RequestMapping(value = "login", method = RequestMethod.POST)
+    public Object login(@RequestBody @Validated LoginQO login) {
         //先匹配手机号码，在匹配用户名
         SysUser user = sysUserService.getSysUserByMobile(login.getLoginName());
         if (null == user) {
@@ -55,13 +58,15 @@ public class SysUserController {
     }
 
     @ApiOperation(value = "用户登出")
-    @PostMapping("/logout")
+    @ResponseBody
+    @RequestMapping(value = "logout",method = RequestMethod.POST)
     public Object logout(Long id) {
         return Result.build(Errors.SUCCESS).setData("登出成功");
     }
 
     @ApiOperation(value = "获取用户信息")
-    @GetMapping("/info")
+    @ResponseBody
+    @RequestMapping(value = "info",method=RequestMethod.GET)
     public Object getUser(@RequestParam(value = "id") Long id) {
         SysUser user = sysUserService.getSysUserByPrimaryKey(id);
         return Result.build(Errors.SUCCESS).setData(user);
