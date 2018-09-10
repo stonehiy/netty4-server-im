@@ -3,7 +3,10 @@ server:
 # Spring boot application
 spring:
   application:
-    name: ebusbar-boos
+    name: im-server
+#  jpa:
+#    hibernate:     #https://segmentfault.com/a/1190000014986752
+#      ddl-auto: create #FlywaySqlScriptException-->Caused by: java.sql.SQLException: sql injection violation, comment not allow : CREATE TABLE `im_db`.`flyway_schema_history`
   datasource:
     url: jdbc:mysql://192.168.56.101:3306/im_db?autoReconnect=true&useUnicode=true&characterEncoding=utf8&useSSL=false
     username: root
@@ -12,7 +15,7 @@ spring:
       stat-view-servlet:
         login-username: ${spring.datasource.username}
         login-password: ${spring.datasource.password}
-      aop-patterns: com.ebusbar.boss.provider.service.*
+      aop-patterns: com.netty4.server.service.*
       web-stat-filter:
         session-stat-enable: true
         exclusions: "*.js,*.gif,*.jpg,*.png,*.css,*.ico,/druid/*"
@@ -46,12 +49,12 @@ swagger:
   enabled: true
   title: spring-boot-starter-swagger
   description: Starter for swagger 2.x
-  version: 1.4.0.RELEASE
+  version: 1.0.0.RELEASE
   license: Apache License, Version 2.0
   licenseUrl: https://www.apache.org/licenses/LICENSE-2.0.html
   termsOfServiceUrl: https://github.com/dyc87112/spring-boot-starter-swagger
   contact:
-    name: didi
+    name: stonehiy
     url: http://blog.didispace.com
     email: stonehiy@gmail.com
   base-package: com.netty4.server
@@ -65,3 +68,4 @@ jwt:
   expires-second: 604800
   issuser: ebusbar-boss
   secret: MDk4ZjZiY2Q0NjIxZDM3M2NhZGU0ZTgzMjYyN2I0ZjY=
+

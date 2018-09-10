@@ -156,7 +156,7 @@
                 <configuration>
                     <url>jdbc:mysql://192.168.56.101:3306</url>
                     <user>root</user>
-                    <password>123456</password>
+                    <password>888888</password>
                     <schemas>
                         <schema>im_db</schema>
                     </schemas>
