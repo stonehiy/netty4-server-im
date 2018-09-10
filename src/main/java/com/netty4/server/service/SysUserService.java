@@ -47,17 +47,16 @@ public class SysUserService {
     /**
      * 注册用户
      */
-    public Object register(LoginQO login){
+    public Object register(LoginQO login) {
         SysUser sysUser = new SysUser();
         BeanUtils.copyProperties(login, sysUser);
-        add(sysUser);
         sysUser.setDeleted(false);
-
+        add(sysUser);
         return Result.build(Errors.SUCCESS);
     }
 
 
-    public SysUser login(LoginQO login){
+    public SysUser login(LoginQO login) {
         //先匹配手机号码，在匹配用户名
         SysUser user = getSysUserByMobile(login.getLoginName());
         if (null == user) {

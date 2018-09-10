@@ -4,9 +4,9 @@ server:
 spring:
   application:
     name: im-server
-#  jpa:
-#    hibernate:     #https://segmentfault.com/a/1190000014986752
-#      ddl-auto: create #FlywaySqlScriptException-->Caused by: java.sql.SQLException: sql injection violation, comment not allow : CREATE TABLE `im_db`.`flyway_schema_history`
+  #  jpa:
+  #    hibernate:     #https://segmentfault.com/a/1190000014986752
+  #      ddl-auto: create #FlywaySqlScriptException-->Caused by: java.sql.SQLException: sql injection violation, comment not allow : CREATE TABLE `im_db`.`flyway_schema_history`
   datasource:
     url: jdbc:mysql://192.168.56.101:3306/im_db?autoReconnect=true&useUnicode=true&characterEncoding=utf8&useSSL=false
     username: root
