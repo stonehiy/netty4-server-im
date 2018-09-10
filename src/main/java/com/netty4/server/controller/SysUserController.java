@@ -9,7 +9,6 @@ import com.netty4.server.util.Errors;
 import com.netty4.server.util.Result;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
@@ -44,7 +43,7 @@ public class SysUserController {
             return Result.build(Errors.USER_NOT_EXIST);
         }
         if (!user.getPassword().equals(login.getPassword())) {
-            Result.build(Errors.PASSWORD_ERROR);
+            return Result.build(Errors.PASSWORD_ERROR);
         }
         String jwt = JwtHelper.createJWT(user, jwtProperties);
         return Result.build(Errors.SUCCESS).setData(jwt);
